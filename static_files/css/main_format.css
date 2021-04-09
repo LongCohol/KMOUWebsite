@@ -1,0 +1,108 @@
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+formTitle {
+    font-family: "Arial";
+    font-weight: bold;
+    font-size: 18px;
+}
+columnTitle {
+    font-family: "Times New Roman";
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.logoHeader {
+    width: 5cm;
+    margin-left: 5cm;
+}
+.linkHeader {
+    color: cadetblue;
+    text-decoration: none;
+}
+.linkFooter {
+    color: darkred;
+    text-decoration: none;
+}
+.titleRow_ShipmentTable {
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    /*width: 6cm;*/
+    background-color: yellow;
+}
+
+.imgInput_ShipmentTable {
+    /*display: block;*/
+    text-align: left;
+    vertical-align: top;
+    /*margin-left: 2cm;*/
+}
+.img1Input_ShipmentTable {
+    /*display: block;*/
+    text-align: left;
+    vertical-align: middle;
+    /*margin-left: 2cm;*/
+}
+.img2Input_ShipmentTable {
+    /*display: block;*/
+    text-align: left;
+    vertical-align: bottom;
+    /*margin-left: 2cm;*/
+}
+.fieldShipmentInputFile {
+    text-align: left;
+    margin-left: 2cm;
+}
+.headerPart {
+    height: 2cm;
+}
+.bodyPart {
+    margin-top: 3cm;
+    min-height: 80vh;
+    height: 100%;
+}
+.footerPart {
+    margin-top: 1cm;
+    height: 8cm;
+    width: 100%;
+    background-size: cover;
+    background-image: url(/static_files/images/footer.jpg);
+    background-repeat: no-repeat
+}
+
+.fieldAccountTagStyle {
+    text-align: left;
+    padding-right: 5px;
+}
+.fieldAccountInputStyle {
+    /*display: block;*/
+    text-align: left;
+    width: 6cm;
+    margin-left: 0.5cm;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.fieldAccountNoteStyle {
+    text-align: left;
+    padding-left: 0.5cm;
+    font-style  : italic;
+    font-size: 13px;
+    color: gray;
+}
+.fieldAccountWarningStyle {
+    text-align: left;
+    font-weight: bold;
+    color: red;
+}
+.fieldButtonStyle {
+    text-align: right;
+    background-color: black;
+    color: white;
+}
+.rowHoverStyle tbody tr:hover {
+    background-color: darkgray;
+}
+.rowCenteredStyle

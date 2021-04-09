@@ -1,0 +1,67 @@
+<div style="text-align: center">
+    <formTitle>SHIPMENT ORDER LIST</formTitle>
+</div>
+
+<table class="centered rowHoverStyle">
+<div style="margin-left: 4cm">
+    <thead>
+    <tr>
+        <th style="text-align: center; background-color: yellow"><formTitle>COMPANY</formTitle></th>
+        <th style="text-align: center; background-color: yellow"><formTitle>VESSEL</formTitle></th>
+        <th style="text-align: center; background-color: yellow"><formTitle>DOC</formTitle></th>
+        <th style="text-align: center; background-color: yellow"><formTitle>ODR</formTitle></th>
+        <th style="text-align: center; background-color: yellow"><formTitle>SUPPLIER</formTitle></th>
+        <th style="text-align: center; background-color: yellow"><formTitle>QTY</formTitle></th>
+        <th style="text-align: center; background-color: yellow"><formTitle>UNIT</formTitle></th>
+        <th style="text-align: center; background-color: yellow"><formTitle>SIZE</formTitle></th>
+        <th style="text-align: center; background-color: yellow"><formTitle>WEIGHT</formTitle></th>
+        <th style="text-align: center; background-color: yellow"><formTitle>IN</formTitle></th>
+        <th style="text-align: center; background-color: yellow"><formTitle>W/H</formTitle></th>
+        <th style="text-align: center; background-color: yellow"><formTitle>BY</formTitle></th>
+        <th style="text-align: center; background-color: yellow"><formTitle>BLNO</formTitle></th>
+        <th style="text-align: center; background-color: yellow"><formTitle>PORT</formTitle></th>
+        <th style="text-align: center; background-color: yellow"><formTitle>OUT</formTitle></th>
+        <th style="text-align: center; background-color: yellow"><formTitle>REMARK</formTitle></th>
+        <th style="text-align: center; background-color: yellow"><formTitle>JOB NO</formTitle></th>
+        <th style="text-align: center; background-color: yellow"><formTitle>UserID</formTitle></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for info in shipmentDisplay %}
+    <tr>
+        <td>{{info.company}}</td>
+        <td>{{info.vessel}}</td>
+        <td>{{info.docs}}</td>
+        <td>{{info.odr}}</td>
+        <td>{{info.supplier}}</td>
+        <td>{{info.quanty}}</td>
+        <td>{{info.unit}}</td>
+        <td>{{info.size}}</td>
+        <td>{{info.weight}}</td>
+        <td>{{info.in_date}}</td>
+        <td>{{info.warehouse}}</td>
+        <td>{{info.by}}</td>
+        <td>{{info.BLno}}</td>
+        <td>{{info.port}}</td>
+        <td>{{info.out_date}}</td>
+        <td>{{info.remark}}</td>
+        <td>{{info.job_number}}</td>
+        <td>{{userChange.username}}</td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</div>
+
+</table>
+
+{% if shipmentDisplay.has_previous %}
+    <a href="?page=1">First</a>
+    <a href="?page={{ shipmentDisplay.previous_page_number }}">Previous</a>
+{% endif %}
+{{ shipmentDisplay.number }}<b>/</b>{{ shipmentDisplay.paginator.num_pages }}
+{% if shipmentDisplay.has_next %}
+    <a href="?page={{ shipmentDisplay.next_page_number }}">Next</a>
+    <a href="?page={{ shipmentDisplay.paginator.num_pages }}">Last</a>
+{% endif %}

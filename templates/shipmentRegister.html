@@ -1,0 +1,112 @@
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+    <table class="centered">
+        <col style="width:6cm">
+        <col style="width:6cm">
+        <col style="width:6cm">
+        <col style="width:6cm">
+
+        <tr>
+            <th colspan="4" style="text-align: center"><formTitle>SHIPMENT ORDER INPUT</formTitle></th>
+        </tr>
+
+        <tr>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.company.label_tag }}</formTitle></td>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.vessel.label_tag }}</formTitle></td>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.docs.label_tag }}</formTitle></td>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.odr.label_tag }}</formTitle></td>
+        </tr>
+        <tr>
+            <td style="text-align: center">{{ shipmentRegister.company }}</td>
+            <td style="text-align: center">{{ shipmentRegister.vessel }}</td>
+            <td style="text-align: center">{{ shipmentRegister.docs }}</td>
+            <td style="text-align: center">{{ shipmentRegister.odr }}</td>
+        </tr>
+
+        <tr>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.supplier.label_tag }}</formTitle></td>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.quanty.label_tag }}</formTitle></td>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.unit.label_tag }}</formTitle></td>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.size.label_tag }}</formTitle></td>
+        </tr>
+        <tr>
+            <td style="text-align: center">{{ shipmentRegister.supplier }}</td>
+            <td style="text-align: center">{{ shipmentRegister.quanty }}</td>
+            <td style="text-align: center">{{ shipmentRegister.unit }}</td>
+            <td style="text-align: center">{{ shipmentRegister.size }}</td>
+        </tr>
+
+        <tr>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.weight.label_tag }}</formTitle></td>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.in_date.label_tag }}</formTitle></td>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.warehouse.label_tag }}</formTitle></td>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.by.label_tag }}</formTitle></td>
+        </tr>
+        <tr>
+            <td style="text-align: center">{{ shipmentRegister.weight }}</td>
+            <td style="text-align: center">{{ shipmentRegister.in_date }}</td>
+            <td style="text-align: center">{{ shipmentRegister.warehouse }}</td>
+            <td style="text-align: center">{{ shipmentRegister.by }}</td>
+        </tr>
+
+        <tr>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.BLno.label_tag }}</formTitle></td>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.port.label_tag }}</formTitle></td>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.out_date.label_tag }}</formTitle></td>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.remark.label_tag }}</formTitle></td>
+        </tr>
+        <tr>
+            <td style="text-align: center">{{ shipmentRegister.BLno }}</td>
+            <td style="text-align: center">{{ shipmentRegister.port }}</td>
+            <td style="text-align: center">{{ shipmentRegister.out_date }}</td>
+            <td style="text-align: center">{{ shipmentRegister.remark }}</td>
+        </tr>
+
+        <tr>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.division.label_tag }}</formTitle></td>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.job_number.label_tag }}</formTitle></td>
+            <td style="text-align: center; background-color: yellow" colspan="2"><formTitle>{{ shipmentRegister.image.label_tag }}</formTitle></td>
+        </tr>
+        <tr>
+            <td style="text-align: center">{{ shipmentRegister.division}}</td>
+            <td style="text-align: center">{{ shipmentRegister.job_number}}</td>
+            <td>
+                <div class="fieldShipmentInputFile" style="vertical-align: top;">
+                    {{ shipmentRegister.image}}
+                </div>
+                <div class="fieldShipmentInputFile" style="vertical-align: middle;">
+                    {{ shipmentRegister.image1}}
+                </div>
+                <div class="fieldShipmentInputFile" style="vertical-align: bottom;">
+                    {{ shipmentRegister.image2}}
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="text-align: center; background-color: yellow"><formTitle>{{ shipmentRegister.pdf_file.label_tag }}</formTitle></td>
+            <td style="text-align: center; background-color: yellow"><formTitle></formTitle></td>
+            <td style="text-align: center; background-color: yellow"><formTitle></formTitle></td>
+            <td style="text-align: center; background-color: yellow"><formTitle></formTitle></td>
+        </tr>
+        <tr>
+            <td>
+                <div class="fieldShipmentInputFile">
+                    {{ shipmentRegister.pdf_file }}
+                </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td colspan="4" style="text-align: right"><button class="fieldButtonStyle" type="submit" name="shipmentregisterform">Save</button></td>
+        </tr>
+
+        <tr>
+            <td colspan="4" class="fieldWarningStyle">{{ shipmentRegister.messages }}</td>
+        </tr>
+
+    </table>
+
+</form>

@@ -1,0 +1,33 @@
+{% extends "body.html" %}
+
+{% block bodyContent %}
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        <table>
+            <tr>
+                <th colspan="2" style="text-align: center"><formTitle>ACCOUNT REGISTRATION FORM</formTitle></th>
+            </tr>
+
+            {% for field in accountRegister %}
+            <tr>
+                <td class="fieldAccountTagStyle">{{ field.label_tag }}</td>
+                <td class="fieldAccountInputStyle" style="width: 6cm;">{{ field }}</td>
+                <td class="fieldAccountNoteStyle">{{ field.help_text }}</td>
+            </tr>
+            <tr>
+                <td class="fieldAccountWarningStyle" colspan="2">{{ field.errors }}</td>
+            </tr>
+            {% endfor %}
+
+            <tr>
+                <td colspan="2" style="text-align: right"><button class="fieldButtonStyle" type="submit">Register</button></td>
+            </tr>
+
+            <tr>
+                <td class="fieldAccountWarningStyle" colspan="2">{{ accountRegister.non_field_errors }}</td>
+            </tr>
+
+        </table>
+
+    </form>
+
+{% endblock bodyContent %}

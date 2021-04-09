@@ -1,0 +1,12 @@
+{% extends "body.html" %}
+
+{% block bodyContent %}
+
+    <h3>LOGIN SUCCEEDED!</h3>
+
+    <p>Welcome, {{ accountAuthenticated.fullname }}. You are authorized to our website as a {{ accountAuthenticated.access_level }}</p>
+    {% if accountAuthenticated.access_level == "Client" %}
+        <p>To continue, please <a href="{% url "account_client" %}">click here</a></p>
+    {% endif %}
+
+{% endblock bodyContent %}

@@ -1,0 +1,29 @@
+{% extends "body.html" %}
+
+{% block bodyContent %}
+    <form method="post">{% csrf_token %}
+        <table>
+            <tr>
+                <th colspan="2" style="text-align: center"><formTitle>LOGIN</formTitle></th>
+            </tr>
+
+            {% for field in accountLogin %}
+                <tr>
+                    <td class="fieldAccountTagStyle">{{ field.label_tag }}</td>
+                    <td class="fieldAccountInputStyle">{{ field }}</td>
+                </tr>
+            {% endfor %}
+
+            <tr>
+                <td colspan="2" style="text-align: right"><button class="fieldButtonStyle" type="submit" name="accountloginform">Login</button></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" class="fieldAccountWarningStyle">{{ accountLogin.non_field_errors }}</td>
+            </tr>
+
+        </table>
+
+    </form>
+
+{% endblock bodyContent %}
