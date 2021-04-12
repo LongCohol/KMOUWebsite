@@ -61,7 +61,7 @@ columnTitle {
 }
 .bodyPart {
     margin-top: 3cm;
-    min-height: 80vh;
+    min-height: 100vh;
     height: 100%;
 }
 .footerPart {

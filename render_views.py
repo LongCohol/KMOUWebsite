@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.contrib.auth import login, logout, authenticate
 
-from Shipment.models import Shipment
+from Shipment.models import Shipment, ShipmentFilter
 from render_forms import AccountRegistration, AccountLoginForm, ShipmentRegistration
 
 
@@ -29,6 +29,7 @@ def accountRegisterView(request):
 def accountLoginView(request):
     # IF this is POST request:
     if request.method == "POST":
+        account = None
         formAccountLogin = AccountLoginForm(request.POST)
 
         if formAccountLogin.is_valid():
@@ -51,11 +52,6 @@ def shipmentRegisterView(request):
     # IF this is POST request:
     if request.method == "POST":
         formShipmentRegister = ShipmentRegistration(request.POST, request.FILES)
-
-        # if formShipmentRegister.is_valid():
-        #     formShipmentRegister.save()
-        #     formShipmentRegister = ShipmentRegistration()
-            # return redirect('shipment_register')
     # ELSE when this is GET request:
     else:
         formShipmentRegister = ShipmentRegistration()
@@ -66,21 +62,36 @@ def shipmentRegisterView(request):
     return result
 
 
-def shipmentDisplayView(request):
-    shipments = Shipment.objects.all().order_by("-number")
-    shipmentList = shipments
+# def shipmentDisplayView(request):
+#     shipments = Shipment.objects.all().order_by("-number")
+#     shipmentList = shipments
+#
+#     paginator = Paginator(shipmentList, RESULT_PER_PAGE)
+#     page = request.GET.get('page')
+#     pagination = paginator.get_page(page)
+#     # account = request.user
+#     accountID = request.session.get('usernameSession')
+#
+#     result = {
+#         "shipmentTotal": shipments,
+#         "shipmentDisplay": pagination,
+#         "userChange": accountID,
+#     }
+#     return result
 
-    paginator = Paginator(shipmentList, RESULT_PER_PAGE)
+
+def shipmentFilterView(request):
+    shipmentList = Shipment.objects.all().order_by("-number")
+    formShipmentFilter = ShipmentFilter(request.GET, queryset=shipmentList)
+    paginator = Paginator(formShipmentFilter.qs, RESULT_PER_PAGE)
     page = request.GET.get('page')
     pagination = paginator.get_page(page)
-    account = request.user
-
     result = {
-        "shipmentTotal": shipments,
+        "shipmentFilter": formShipmentFilter,
         "shipmentDisplay": pagination,
-        "userChange": account,
     }
     return result
+    # return render(request, 'shipmentFilter.html', {'shipmentFilter': formShipmentFilter})
 
 
 def loginRedirectView(request):
@@ -91,6 +102,12 @@ def loginRedirectView(request):
 
 
 def logoutRedirectView(request):
+    print(request.session['usernameSession'])
+    try:
+        del request.session['usernameSession']
+    except KeyError:
+        pass
+
     logout(request)
 
     return redirect('frontpage')
@@ -107,6 +124,10 @@ def homepageView(request):
             account = CONTEXT["accountExist"]
             if account is not None:
                 login(request, account)
+                request.session['usernameSession'] = account.username
+                request.session.set_expiry(0)
+                print(request.session['usernameSession'])
+                print(request.session.get_expire_at_browser_close())
                 return redirect('redirect_login')
 
     return render(request, "frontpage.html", CONTEXT)
@@ -114,6 +135,13 @@ def homepageView(request):
 
 def accountClientView(request):
     shipmentregisterview_result = shipmentRegisterView(request)
+    # shipmentList = Shipment.objects.all().order_by("-number")
+    # formShipmentFilter = ShipmentFilter(request.GET, queryset=shipmentList)
+    # paginator = Paginator(formShipmentFilter.qs, RESULT_PER_PAGE)
+    # page = request.GET.get('page')
+    # pagination = paginator.get_page(page)
+    # CONTEXT["shipmentFilter"] = formShipmentFilter
+    # CONTEXT["shipmentDisplay"] = pagination
     CONTEXT.update(shipmentregisterview_result)
 
     if request.method == "POST":
@@ -125,12 +153,12 @@ def accountClientView(request):
                 shipmentregisterform.save()
                 CONTEXT["shipmentRegister"] = ShipmentRegistration()
 
-                shipmentdisplayview_result = shipmentDisplayView(request)
-                CONTEXT.update(shipmentdisplayview_result)
+                # shipmentfilterview_result = shipmentFilterView(request)
+                # CONTEXT.update(shipmentfilterview_result)
                 return redirect('account_client')
     else:
         CONTEXT["shipmentRegister"] = ShipmentRegistration()
 
-    shipmentdisplayview_result = shipmentDisplayView(request)
-    CONTEXT.update(shipmentdisplayview_result)
+    shipmentfilterview_result = shipmentFilterView(request)
+    CONTEXT.update(shipmentfilterview_result)
     return render(request, "accountClient.html", CONTEXT)

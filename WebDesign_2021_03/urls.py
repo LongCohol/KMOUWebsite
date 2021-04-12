@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from render_views import homepageView, accountClientView, \
-    accountRegisterView, shipmentRegisterView, \
+    accountRegisterView, shipmentRegisterView, shipmentFilterView, \
     loginRedirectView, logoutRedirectView
 
 urlpatterns = [
@@ -28,4 +28,5 @@ urlpatterns = [
     path('redirect_logout/', logoutRedirectView, name="redirect_logout"),
     path('account_client/', accountClientView, name="account_client"),
     path('shipment_register/', shipmentRegisterView, name="shipment_register"),
+    path('shipment_filter/', shipmentFilterView, name="shipment_filter"),
 ]

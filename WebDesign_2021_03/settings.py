@@ -24,8 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '*zq!!et%2$0w!^2r1@hp5t%kv0&=gty#r883cc+d+xa&@b^kd%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_filters',
+    
     # Custom apps:
     'Account',
     'Shipment',
@@ -73,6 +75,7 @@ TEMPLATES = [
         },
     },
 ]
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 WSGI_APPLICATION = 'WebDesign_2021_03.wsgi.application'
 
@@ -93,6 +96,19 @@ DATABASES = {
         }
     },
 }
+# DATABASES = {
+#     'default': {                                                    # MUST HAVE THIS 'DEFAULT' DATABASE!
+#         'ENGINE': 'django.db.backends.mysql',                       # Type of database: MySQL
+#         'NAME': 'longKMOU$company_data2021',                                 # name of database
+#         'USER': 'longKMOU',                                             # username for host
+#         'PASSWORD': 'kmou1995',                                             # password for host
+#         'HOST': 'longKMOU.mysql.pythonanywhere-services.com',
+#         'PORT': '3306',
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+#         }
+#     },
+# }
 
 
 # Password validation

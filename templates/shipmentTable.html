@@ -1,29 +1,29 @@
 <div style="text-align: center">
-    <formTitle>SHIPMENT ORDER LIST</formTitle>
+    <formTitle>SHIPMENT LIST</formTitle>
 </div>
 
 <table class="centered rowHoverStyle">
 <div style="margin-left: 4cm">
     <thead>
     <tr>
-        <th style="text-align: center; background-color: yellow"><formTitle>COMPANY</formTitle></th>
-        <th style="text-align: center; background-color: yellow"><formTitle>VESSEL</formTitle></th>
-        <th style="text-align: center; background-color: yellow"><formTitle>DOC</formTitle></th>
-        <th style="text-align: center; background-color: yellow"><formTitle>ODR</formTitle></th>
-        <th style="text-align: center; background-color: yellow"><formTitle>SUPPLIER</formTitle></th>
-        <th style="text-align: center; background-color: yellow"><formTitle>QTY</formTitle></th>
-        <th style="text-align: center; background-color: yellow"><formTitle>UNIT</formTitle></th>
-        <th style="text-align: center; background-color: yellow"><formTitle>SIZE</formTitle></th>
-        <th style="text-align: center; background-color: yellow"><formTitle>WEIGHT</formTitle></th>
-        <th style="text-align: center; background-color: yellow"><formTitle>IN</formTitle></th>
-        <th style="text-align: center; background-color: yellow"><formTitle>W/H</formTitle></th>
-        <th style="text-align: center; background-color: yellow"><formTitle>BY</formTitle></th>
-        <th style="text-align: center; background-color: yellow"><formTitle>BLNO</formTitle></th>
-        <th style="text-align: center; background-color: yellow"><formTitle>PORT</formTitle></th>
-        <th style="text-align: center; background-color: yellow"><formTitle>OUT</formTitle></th>
-        <th style="text-align: center; background-color: yellow"><formTitle>REMARK</formTitle></th>
-        <th style="text-align: center; background-color: yellow"><formTitle>JOB NO</formTitle></th>
-        <th style="text-align: center; background-color: yellow"><formTitle>UserID</formTitle></th>
+        <th style="text-align: center; background-color: lightyellow"><columnTitle>COMPANY</columnTitle></th>
+        <th style="text-align: center; background-color: lightyellow"><columnTitle>VESSEL</columnTitle></th>
+        <th style="text-align: center; background-color: lightyellow"><columnTitle>DOC</columnTitle></th>
+        <th style="text-align: center; background-color: lightyellow"><columnTitle>ODR</columnTitle></th>
+        <th style="text-align: center; background-color: lightyellow"><columnTitle>SUPPLIER</columnTitle></th>
+        <th style="text-align: center; background-color: lightyellow"><columnTitle>QTY</columnTitle></th>
+        <th style="text-align: center; background-color: lightyellow"><columnTitle>UNIT</columnTitle></th>
+        <th style="text-align: center; background-color: lightyellow"><columnTitle>SIZE</columnTitle></th>
+        <th style="text-align: center; background-color: lightyellow"><columnTitle>WEIGHT</columnTitle></th>
+        <th style="text-align: center; background-color: lightyellow"><columnTitle>IN</columnTitle></th>
+        <th style="text-align: center; background-color: lightyellow"><columnTitle>W/H</columnTitle></th>
+        <th style="text-align: center; background-color: lightyellow"><columnTitle>BY</columnTitle></th>
+        <th style="text-align: center; background-color: lightyellow"><columnTitle>BLNO</columnTitle></th>
+        <th style="text-align: center; background-color: lightyellow"><columnTitle>PORT</columnTitle></th>
+        <th style="text-align: center; background-color: lightyellow"><columnTitle>OUT</columnTitle></th>
+        <th style="text-align: center; background-color: lightyellow"><columnTitle>REMARK</columnTitle></th>
+        <th style="text-align: center; background-color: lightyellow"><columnTitle>JOB NO</columnTitle></th>
+{#        <th style="text-align: center; background-color: lightyellow"><columnTitle>UserID</columnTitle></th>#}
     </tr>
     </thead>
 
@@ -47,7 +47,7 @@
         <td>{{info.out_date}}</td>
         <td>{{info.remark}}</td>
         <td>{{info.job_number}}</td>
-        <td>{{userChange.username}}</td>
+{#        <td>{{userChange}}</td>#}
     </tr>
     {% endfor %}
 
@@ -65,3 +65,12 @@
     <a href="?page={{ shipmentDisplay.next_page_number }}">Next</a>
     <a href="?page={{ shipmentDisplay.paginator.num_pages }}">Last</a>
 {% endif %}
+{#{% if shipmentDisplay.has_previous %}#}
+{#    <a href="{% url "account_client" %}">First</a>#}
+{#    <a href="{% url "account_client" %}">Previous</a>#}
+{#{% endif %}#}
+{#{{ shipmentDisplay.number }}<b>/</b>{{ shipmentDisplay.paginator.num_pages }}#}
+{#{% if shipmentDisplay.has_next %}#}
+{#    <a href="{% url "account_client" %}">Next</a>#}
+{#    <a href="{% url "account_client" %}">Last</a>#}
+{#{% endif %}#}

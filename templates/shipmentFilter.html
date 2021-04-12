@@ -1,0 +1,31 @@
+<form method="get">
+    <table>
+        <col style="width:6cm">
+        <col style="width:6cm">
+        <col style="width:6cm">
+        <col style="width:6cm">
+
+        <tr>
+            <th colspan="4" style="text-align: center"><formTitle>SEARCH & FILTER</formTitle></th>
+        </tr>
+
+        <tr>
+            <td style="text-align: center; background-color: lightyellow"><formTitle>{{ shipmentFilter.form.company.label_tag }}</formTitle></td>
+            <td style="text-align: center; background-color: lightyellow"><formTitle>{{ shipmentFilter.form.odr.label_tag }}</formTitle></td>
+            <td style="text-align: center; background-color: lightyellow"><formTitle>{{ shipmentFilter.form.in_date.label_tag }}</formTitle></td>
+            <td style="text-align: center; background-color: lightyellow"><formTitle>{{ shipmentFilter.form.out_date.label_tag }}</formTitle></td>
+        </tr>
+        <tr>
+            <td style="text-align: center">{{ shipmentFilter.form.company }}</td>
+            <td style="text-align: center">{{ shipmentFilter.form.odr }}</td>
+            <td style="text-align: center">{{ shipmentFilter.form.in_date }}</td>
+            <td style="text-align: center">{{ shipmentFilter.form.out_date }}</td>
+        </tr>
+
+        <tr>
+            <td colspan="4" style="text-align: right"><button class="fieldButtonStyle" type="submit" name="shipmentfilterform">Search</button></td>
+        </tr>
+
+    </table>
+
+</form>

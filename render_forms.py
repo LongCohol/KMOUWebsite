@@ -103,6 +103,9 @@ class AccountLoginForm(forms.ModelForm):
 
 
 class ShipmentRegistration(forms.ModelForm):
+    in_date = forms.DateField(required=False, input_formats=['%Y-%m-%d'], widget=forms.DateInput(format='%Y-%m-%d'), label="IN")
+    out_date = forms.DateField(required=False, input_formats=['%Y-%m-%d'], widget=forms.DateInput(format='%Y-%m-%d'), label="OUT")
+
     class Meta:
         model = Shipment
         fields = ('company', 'vessel', 'docs', 'odr', 'supplier', 'quanty', 'unit', 'size', 'weight', 'in_date',

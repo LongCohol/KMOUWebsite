@@ -5,6 +5,8 @@ import barcode
 from barcode.writer import ImageWriter
 from io import BytesIO
 from django.core.files import File
+# For filter form
+import django_filters
 
 
 IMAGE_PATH = "imageShipment/"
@@ -100,10 +102,10 @@ class Shipment(models.Model):
     unit = models.CharField(blank=True, db_column="unit", max_length=10, verbose_name="UNIT")
     size = models.TextField(blank=True, db_column="size", max_length=100, verbose_name="SIZE")
     weight = models.CharField(blank=True, db_column="weight", max_length=10, verbose_name="WEIGHT")
-    in_date = models.DateTimeField(blank=True, null=True, db_column="in1", max_length=6, verbose_name="IN")
+    in_date = models.DateField(blank=True, null=True, db_column="in1", max_length=10, verbose_name="IN")
     warehouse = models.CharField(blank=True, db_column="whouse", choices=WAREHOUSE, max_length=100, verbose_name="W/H")
     port = models.CharField(blank=True, db_column="port", max_length=100, verbose_name="PORT")
-    out_date = models.DateTimeField(blank=True, null=True, db_column="out1", max_length=6, verbose_name="OUT")
+    out_date = models.DateField(blank=True, null=True, db_column="out1", max_length=10, verbose_name="OUT")
     remark = models.TextField(blank=True, db_column="remark", max_length=500, verbose_name="REMARK")
     image = models.ImageField(upload_to=image_path, db_column="img", blank=True, verbose_name="IMG",
                               storage=OverrideExisting())
@@ -135,3 +137,14 @@ class Shipment(models.Model):
 
         self.barcode.save(f'{self.odr}.png', File(byte), save=False)
         return super().save(*args, **kwargs)
+
+
+class ShipmentFilter(django_filters.FilterSet):
+    # company = django_filters.ChoiceFilter(lookup_expr='iexact')
+    odr = django_filters.CharFilter(lookup_expr="icontains")
+    in_date = django_filters.DateFilter(label="In Date (yyyy-mm-dd)", input_formats=['%Y-%m-%d'])
+    out_date = django_filters.DateFilter(label="Out Date (yyyy-mm-dd)", input_formats=['%Y-%m-%d'])
+
+    class Meta:
+        model = Shipment
+        fields = ['company', 'odr', 'in_date', 'out_date']
